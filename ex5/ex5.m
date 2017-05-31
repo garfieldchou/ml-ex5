@@ -218,3 +218,15 @@ end
 
 fprintf('Program paused. Press enter to continue.\n');
 pause;
+
+%% =========== Part 9: Computing test set error =============
+%  Compute test error with lambda=3
+%
+
+thetaLambda3 = trainLinearReg(X_poly, y, 3);
+error_test = linearRegCostFunction(X_poly_test, ytest, thetaLambda3, 0);
+
+fprintf('Test error with lambda=3: %f\n\n', error_test);
+
+fprintf('Program paused. Press enter to continue.\n');
+pause;
