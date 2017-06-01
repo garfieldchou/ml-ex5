@@ -59,6 +59,9 @@ randXval_indices = randperm(mVal);
 
 for i = 1:m
 
+	error_train_sum = 0;
+	error_val_sum = 0;
+
 	for j = 1:50
 
 		randX_indices = randperm(m);
@@ -66,13 +69,13 @@ for i = 1:m
 
 		theta = trainLinearReg(X(randX_indices(1:i), :), y(randX_indices(1:i), :), lambda);
 
-		error_train += linearRegCostFunction(X(randX_indices(1:i), :), y(randX_indices(1:i), :), theta, 0);
-		error_val += linearRegCostFunction(Xval(randXval_indices(1:i), :), yval(randXval_indices(1:i), :), theta, 0);
+		error_train_sum += linearRegCostFunction(X(randX_indices(1:i), :), y(randX_indices(1:i), :), theta, 0);
+		error_val_sum += linearRegCostFunction(Xval(randXval_indices(1:i), :), yval(randXval_indices(1:i), :), theta, 0);
 
 	end
 
-	error_train(i) = error_train / 50;
-	error_val(i) = error_val / 50;
+	error_train(i) = error_train_sum / 50;
+	error_val(i) = error_val_sum / 50;
 
 end
 
